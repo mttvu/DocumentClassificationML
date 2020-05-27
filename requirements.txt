@@ -2,3 +2,4 @@ nltk
 PyPDF2
 tika
 flask
+gunicorn
