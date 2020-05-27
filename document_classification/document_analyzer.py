@@ -33,5 +33,4 @@ def test():
     print('cbr - prediction: ', predict_category_test('data/rijgesd411.pdf'))
 
 
-test()
 

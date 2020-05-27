@@ -38,8 +38,7 @@ def documents_to_csv(documents, document_type):
                 fieldnames = ['type', 'text']
                 writer = csv.DictWriter(file, fieldnames=fieldnames, delimiter=';')
                 writer.writerow({'type': document_type, 'text': filtered_text})
-        except TypeError as e:
-            print(e)
+        except:
             pass
 
 
@@ -61,9 +60,8 @@ def delete_invoices():
     #             writer.writerow(row)
 
 
-# documents_to_csv(bank_documents, 'bank')
-# documents_to_csv(cbr_documents, 'cbr')
-# documents_to_csv(government_documents, 'government')
-# documents_to_csv(thesis_documents, 'thesis')
-delete_invoices()
+documents_to_csv(bank_documents, 'bank')
+documents_to_csv(cbr_documents, 'cbr')
+documents_to_csv(government_documents, 'government')
+documents_to_csv(thesis_documents, 'thesis')
 documents_to_csv(invoice_documents, 'invoice')
