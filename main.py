@@ -1,5 +1,6 @@
 from flask import Flask
 from document_classification.document_analyzer import document_analyzer
+import document_classification
 from document_classification.model_trainer import do_nothing
 app = Flask(__name__)
 app.register_blueprint(document_analyzer, url_prefix='/analyzer')

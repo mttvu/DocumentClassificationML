@@ -14,7 +14,7 @@ def predict_category():
     file = request.files['document']
     path = os.path.join(tempdir, file.filename)
     file.save(path)
-    model = pickle.load(open('document_classification/model.pickle', 'rb'))
+    model = pickle.load(open('model.pickle', 'rb'))
     prediction = model.predict([prepare_document(path)])
     return prediction[0]
 
