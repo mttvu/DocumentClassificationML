@@ -1,6 +1,7 @@
 import pickle
 import tempfile
 import os
+import document_classification
 from document_classification.model_trainer import do_nothing
 from document_classification.document_preparer import prepare_document
 from flask import Blueprint, request
