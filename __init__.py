@@ -1,0 +1,1 @@
+from document_classification.model_trainer import do_nothing
