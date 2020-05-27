@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Invoice INV001</title>
+		<style type="text/css">
+			* {
+	box-sizing: border-box;
+}
+
+body
+{
+	padding: 2rem;
+	margin: 0;
+}
+
+h1, h2, p {
+	margin: 0;
+}
+
+h1 + h2, h2 + p, p + p {
+	padding-top: 0.5rem;
+}
+
+.label {
+	font-weight: bold;
+}
+
+.grid
+{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	row-gap: 2rem;
+}
+
+section.payee-details, section.payment-details {
+	text-align: right;
+}
+
+section.payer-details, section.payment-details
+{
+	border: 1px solid #000;
+	padding: 1rem;
+}
+
+section.payer-details {
+	margin-right: 0.5rem;
+}
+
+section.payment-details {
+	margin-left: 0.5rem;
+}
+
+section.purchase-order-details, section.items
+{
+	grid-column-start: 1;
+	grid-column-end: 3;
+}
+
+table {
+	width: 100%;
+}
+
+table, table th, table td
+{
+	border-collapse: collapse;
+	border: 1px solid #000;
+}
+
+table th, table td {
+	padding: 0.5rem;
+}
+
+table tr.section-description th {
+	text-align: left;
+}
+
+table thead tr, table tr.section-description, table tr.subtotal, table tr.tax, table tr.total {
+	background-color: #ccc;
+}
+		</style>
+	</head>
+
+	<body>
+
+		<!-- Use CSS grid layout attributes to position and reorder page sections however you like -->
+		<main class="grid">
+
+			<!-- Invoice/quote metadata (issuing business, invoice/quote number, date, purchase order reference) -->
+			<section class="invoice-meta">
+
+				<h1 class="business-name">XYZ Widget Company</h1>
+				<h2 class="metadata">Invoice #INV001</h2>
+
+				<p class="date"><span class="label">Date:</span> 2020-04-07</p>
+
+				
+
+			</section>
+
+			<!-- Payee details -->
+			<section class="payee-details">
+
+				
+				<p class="address-line">1 Widget Road</p>
+				
+				<p class="address-line">Widgetville</p>
+				
+				<p class="address-line">WID 9999</p>
+				
+
+				
+				<p class="identifier"><span class="label">Identifier (ABN/VAT number/etc.):</span> 123456789</p>
+				
+
+				
+				<p class="email"><span class="label">Email:</span> domestic@example.com</p>
+				
+
+				
+
+				
+
+			</section>
+
+			<!-- Payer details -->
+			<section class="payer-details">
+
+				<p class="label">Billed to:</p>
+				<p class="payer-name">XYZ Widget Company</p>
+
+				
+				<p class="address-line">1 Widget Road</p>
+				
+				<p class="address-line">Widgetville</p>
+				
+				<p class="address-line">WID 9999</p>
+				
+
+			</section>
+
+			<!-- Payment details -->
+			<section class="payment-details">
+
+				
+
+					<!-- Details that only apply to invoices -->
+					<p class="label">Pay to:</p>
+
+					
+					
+
+						<!-- Bank account details -->
+						<p><span class="label">Name:</span> XYZ Widget Company</p>
+						<p><span class="label">Bank:</span> Acme Banking Co</p>
+						
+						<p><span class="label">Bank code (BSB/sort code/etc.):</span> 123-456</p>
+						<p><span class="label">Account Number:</span> 192837465</p>
+
+					
+
+					<p class="due"><span class="label">Balance due:</span> Within 30 days of receipt</p>
+
+				
+
+			</section>
+
+			<!-- Line items -->
+			<section class="items">
+				<table>
+
+					<thead>
+						<tr><th>Item Description</th><th>Quantity</th><th>Unit Price</th><th>Total</th></tr>
+					</thead>
+
+					
+					<tbody class="section">
+
+						
+						<tr class="section-description"><th colspan="4">Materials</th></tr>
+						
+
+						
+						<tr class="line-item">
+							<td class="description">Widget A</td>
+							<td class="quantity">20 pcs</td>
+							<td class="price">€ 12,99</td>
+							<td class="total">€ 259,80</td>
+						</tr>
+						
+
+						<tr class="subtotal"><td colspan="3">Subtotal</td><td>€ 259,80</td></tr>
+
+					</tbody>
+					
+
+					<tbody class="overall">
+
+						
+
+						<tr class="total"><td colspan="3">Total</td><td>€ 259,80</td></tr>
+
+					</tbody>
+				</table>
+			</section>
+
+		</main>
+
+	</body>
+</html>
