@@ -1,10 +1,4 @@
-faker
-InvoiceGenerator
-tensorflow
-numpy
-sklearn
-PyPDF2
-flask
-pandas
 nltk
+PyPDF2
 tika
+flask
