@@ -17,6 +17,7 @@ def do_nothing(tokens):
 
 def train_model():
     csv.field_size_limit(2147483647)
+
     data = pandas.read_csv("dataset.csv", engine='python', error_bad_lines=False, sep=';')
     data = data[["type", "text"]]
     class_names = ['bank', 'cbr', 'government', 'thesis', 'invoice']
@@ -48,4 +49,4 @@ def train_model():
     print(classification_report(types_test, logistic_prediction, target_names=class_names))
 
 
-#train_model()
+train_model()
