@@ -1,7 +1,6 @@
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem.snowball import DutchStemmer
-from PyPDF2 import PdfFileReader
 from tika import parser
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
