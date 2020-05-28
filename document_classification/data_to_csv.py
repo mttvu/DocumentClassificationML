@@ -60,8 +60,8 @@ def delete_invoices():
     #             writer.writerow(row)
 
 
-documents_to_csv(bank_documents, 'bank')
-documents_to_csv(cbr_documents, 'cbr')
-documents_to_csv(government_documents, 'government')
-documents_to_csv(thesis_documents, 'thesis')
-documents_to_csv(invoice_documents, 'invoice')
+# documents_to_csv(bank_documents, 'bank')
+# documents_to_csv(cbr_documents, 'cbr')
+# documents_to_csv(government_documents, 'government')
+# documents_to_csv(thesis_documents, 'thesis')
+# documents_to_csv(invoice_documents, 'invoice')

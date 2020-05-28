@@ -1,7 +1,7 @@
+pdfminer
 numpy
 sklearn
 nltk
-PyPDF2
 tika
 flask
 gunicorn
