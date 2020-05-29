@@ -2,7 +2,7 @@ import pickle
 import tempfile
 import os
 import document_classification
-from document_classification.model_trainer import do_nothing
+from document_classification.model_trainer import load_model
 from document_classification.document_preparer import prepare_document
 from flask import Blueprint, request
 
@@ -19,8 +19,7 @@ def predict_category():
     file = request.files['document']
     path = os.path.join(tempdir, file.filename)
     file.save(path)
-    document_classification.document_analyzer.main()
-    model = pickle.load(open('document_classification/model.pickle', 'rb'))
+    model = load_model()
     prediction = model.predict([prepare_document(path)])
     return prediction[0]
 

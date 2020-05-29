@@ -49,5 +49,7 @@ def train_model():
     print(classification_report(types_test, logistic_prediction, target_names=class_names))
 
 
-def train_extra():
-    model = pickle.load(open('model.pickle', 'rb'))
+def load_model():
+    model = pickle.load(open('document_classification/model.pickle', 'rb'))
+    return model
+
