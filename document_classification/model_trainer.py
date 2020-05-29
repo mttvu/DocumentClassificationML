@@ -43,6 +43,7 @@ def train_model():
     )
 
     logistic.fit(docs_train, types_train)
+    logistic.__module__ = "model_trainer"
     joblib.dump(logistic, 'model.pickle', compress=1)
     logistic_prediction = logistic.predict(docs_test)
 
