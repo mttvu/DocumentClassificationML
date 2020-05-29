@@ -1,8 +1,7 @@
 import pickle
 import tempfile
 import os
-
-import joblib
+import dill
 
 from document_classification.document_preparer import prepare_document
 from flask import Blueprint, request, app
@@ -11,20 +10,12 @@ document_analyzer = Blueprint("document_analyzer", __name__)
 tempdir = tempfile.gettempdir()
 
 
-class MyCustomUnpickler(pickle.Unpickler):
-    def find_class(self, module, name):
-        if module == "__main__":
-            module = "model_trainer"
-        return super().find_class(module, name)
-
-
 @document_analyzer.route("/", methods=['POST'])
 def predict_category():
     file = request.files['document']
     path = os.path.join(tempdir, file.filename)
     file.save(path)
-    unpickler = MyCustomUnpickler(joblib.load(open('document_classification/model.pickle', 'rb')))
-    model = unpickler.load()
+    model = dill.load(open('document_classification/model.pickle', 'rb'))
     prediction = model.predict([prepare_document(path)])
     return prediction[0]
 

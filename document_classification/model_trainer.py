@@ -1,9 +1,9 @@
-import joblib
 import pandas
 import csv
 import numpy
 import sklearn
 import pickle
+import dill
 from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import TfidfTransformer, CountVectorizer
@@ -36,15 +36,14 @@ def train_model():
 
     logistic = Pipeline(
         [
-            ('vect', CountVectorizer(tokenizer=do_nothing, preprocessor=None, lowercase=False)),
+            ('vect', CountVectorizer(tokenizer=lambda text: text, preprocessor=None, lowercase=False)),
             ('tfidf', TfidfTransformer()),
             ('clf', LogisticRegression())
         ]
     )
 
     logistic.fit(docs_train, types_train)
-    logistic.__module__ = "model_trainer"
-    joblib.dump(logistic, 'model.pickle', compress=1)
+    dill.dump(logistic, open('model.pickle', 'wb'))
     logistic_prediction = logistic.predict(docs_test)
 
     print('logistic accuracy: ', accuracy_score(types_test, logistic_prediction))
@@ -56,5 +55,4 @@ def load_model():
     return model
 
 
-# train_model()
 

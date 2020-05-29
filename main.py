@@ -1,7 +1,6 @@
 import joblib
 from flask import Flask
 from document_classification.document_analyzer import document_analyzer
-from document_classification.model_trainer import do_nothing
 
 
 app = Flask(__name__)

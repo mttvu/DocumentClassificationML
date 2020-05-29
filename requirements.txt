@@ -2,7 +2,7 @@ pdfminer
 numpy
 sklearn
 nltk
-joblib
+dill
 tika
 flask
 gunicorn
