@@ -5,7 +5,7 @@ import os
 import joblib
 
 from document_classification.document_preparer import prepare_document
-from flask import Blueprint, request
+from flask import Blueprint, request, app
 
 document_analyzer = Blueprint("document_analyzer", __name__)
 tempdir = tempfile.gettempdir()
@@ -15,12 +15,19 @@ def do_nothing(tokens):
     return tokens
 
 
+@app.before_first_request
+def load_models():
+    # from utils import tokenize
+
+    global model
+    model = joblib.load(open('document_classification/model.pickle', 'rb'))
+
+
 @document_analyzer.route("/", methods=['POST'])
 def predict_category():
     file = request.files['document']
     path = os.path.join(tempdir, file.filename)
     file.save(path)
-    model = joblib.load(open('document_classification/model.pickle', 'rb'))
     prediction = model.predict([prepare_document(path)])
     return prediction[0]
 
