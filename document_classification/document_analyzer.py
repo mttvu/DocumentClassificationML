@@ -7,16 +7,15 @@ import joblib
 from document_classification.document_preparer import prepare_document
 from flask import Blueprint, request, app
 
-
 document_analyzer = Blueprint("document_analyzer", __name__)
 tempdir = tempfile.gettempdir()
 
 
-def do_nothing(tokens):
-    return tokens
-
-
-
+class MyCustomUnpickler(pickle.Unpickler):
+    def find_class(self, module, name):
+        if module == "__main__":
+            module = "app"
+        return super().find_class(module, name)
 
 
 @document_analyzer.route("/", methods=['POST'])
@@ -24,7 +23,8 @@ def predict_category():
     file = request.files['document']
     path = os.path.join(tempdir, file.filename)
     file.save(path)
-    global model
+    unpickler = MyCustomUnpickler(joblib.load(open('document_classification/model.pickle', 'rb')))
+    model = unpickler.load()
     prediction = model.predict([prepare_document(path)])
     return prediction[0]
 
