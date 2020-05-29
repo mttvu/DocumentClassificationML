@@ -50,3 +50,7 @@ def convert_pdf_to_txt(path):
     device.close()
     retstr.close()
     return text
+
+
+def do_nothing(tokens):
+    return tokens

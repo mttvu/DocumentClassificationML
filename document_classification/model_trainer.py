@@ -1,3 +1,4 @@
+import joblib
 import pandas
 import csv
 import numpy
@@ -42,7 +43,7 @@ def train_model():
     )
 
     logistic.fit(docs_train, types_train)
-    pickle.dump(logistic, open('model.pickle', 'wb'))
+    joblib.dump(logistic, 'model.pickle', compress=1)
     logistic_prediction = logistic.predict(docs_test)
 
     print('logistic accuracy: ', accuracy_score(types_test, logistic_prediction))
@@ -52,4 +53,7 @@ def train_model():
 def load_model():
     model = pickle.load(open('document_classification/model.pickle', 'rb'))
     return model
+
+
+# train_model()
 
