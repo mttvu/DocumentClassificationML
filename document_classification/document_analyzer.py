@@ -10,6 +10,10 @@ document_analyzer = Blueprint("document_analyzer", __name__)
 tempdir = tempfile.gettempdir()
 
 
+def do_nothing(tokens):
+    return tokens
+
+
 @document_analyzer.route("/", methods=['POST'])
 def predict_category():
     file = request.files['document']
