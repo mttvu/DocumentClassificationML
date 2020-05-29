@@ -1,4 +1,4 @@
-pdfminer
+pdfminer.six
 numpy
 sklearn
 nltk
