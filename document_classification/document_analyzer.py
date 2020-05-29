@@ -14,7 +14,7 @@ tempdir = tempfile.gettempdir()
 class MyCustomUnpickler(pickle.Unpickler):
     def find_class(self, module, name):
         if module == "__main__":
-            module = "app"
+            module = "model_trainer"
         return super().find_class(module, name)
 
 
